@@ -1,21 +1,21 @@
 {
   "project_info": {
-    "project_number": "44885228795",
-    "project_id": "gemini-cat-chef",
-    "storage_bucket": "gemini-cat-chef.appspot.com"
+    "project_number": "1002320533567",
+    "project_id": "gemini-recipes-app",
+    "storage_bucket": "gemini-recipes-app.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:44885228795:android:d1ed69a5c617a8b98f845e",
+        "mobilesdk_app_id": "1:1002320533567:android:38324d7ba9846e4eff808a",
         "android_client_info": {
-          "package_name": "com.example.gemini_io_talk"
+          "package_name": "com.aiassist4u"
         }
       },
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyANxBBzc4s-Yuol0xqs-mEtXe-pNcut3OU"
+          "current_key": "AIzaSyDxVYoz06z5aYjUt9QqOQb91E5M4HD6TSk"
         }
       ],
       "services": {

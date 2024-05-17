@@ -43,8 +43,7 @@ class _MainAppState extends State<MainApp> {
   late GenerativeModel geminiProModel;
   @override
   void initState() {
-    const apiKey =
-        String.fromEnvironment('API_KEY', defaultValue: 'key not found');
+    const apiKey = 'AIzaSyBgAqkkIFEoINSOT8tMEUmAJfXdm_5X790';
     if (apiKey == 'key not found') {
       throw InvalidApiKey(
         'Key not found in environment. Please add an API key.',
@@ -55,7 +54,7 @@ class _MainAppState extends State<MainApp> {
       model: 'gemini-pro-vision',
       apiKey: apiKey,
       generationConfig: GenerationConfig(
-        temperature: 0.4,
+        temperature: 1,
         topK: 32,
         topP: 1,
         maxOutputTokens: 4096,
@@ -68,7 +67,7 @@ class _MainAppState extends State<MainApp> {
 
     geminiProModel = GenerativeModel(
       model: 'gemini-pro',
-      apiKey: const String.fromEnvironment('API_KEY'),
+      apiKey: 'AIzaSyBgAqkkIFEoINSOT8tMEUmAJfXdm_5X790',
       generationConfig: GenerationConfig(
         temperature: 0.4,
         topK: 32,
