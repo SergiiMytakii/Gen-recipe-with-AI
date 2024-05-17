@@ -1,3 +1,4 @@
+import 'package:ai_recipe_generation/constants.dart';
 import 'package:ai_recipe_generation/util/device_info.dart';
 import 'package:ai_recipe_generation/util/tap_recorder.dart';
 import 'package:camera/camera.dart';
@@ -43,7 +44,7 @@ class _MainAppState extends State<MainApp> {
   late GenerativeModel geminiProModel;
   @override
   void initState() {
-    const apiKey = 'AIzaSyBgAqkkIFEoINSOT8tMEUmAJfXdm_5X790';
+    const apiKey = api_key;
     if (apiKey == 'key not found') {
       throw InvalidApiKey(
         'Key not found in environment. Please add an API key.',
@@ -67,7 +68,7 @@ class _MainAppState extends State<MainApp> {
 
     geminiProModel = GenerativeModel(
       model: 'gemini-pro',
-      apiKey: 'AIzaSyBgAqkkIFEoINSOT8tMEUmAJfXdm_5X790',
+      apiKey: api_key,
       generationConfig: GenerationConfig(
         temperature: 0.4,
         topK: 32,
