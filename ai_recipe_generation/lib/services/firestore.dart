@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '../features/recipes/recipe_model.dart';
 
-const recipePath = '/recipes';
+const recipePath = 'recipes';
 final firestore = FirebaseFirestore.instance;
 
 class FirestoreService {

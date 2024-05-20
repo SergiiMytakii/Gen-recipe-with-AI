@@ -3,9 +3,11 @@ import 'package:ai_recipe_generation/util/device_info.dart';
 import 'package:ai_recipe_generation/util/tap_recorder.dart';
 import 'package:camera/camera.dart';
 import 'package:device_info_plus/device_info_plus.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+// import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:google_generative_ai/google_generative_ai.dart';
 import 'package:provider/provider.dart';
 
@@ -28,8 +30,20 @@ void main() async {
     final cameras = await availableCameras();
     camera = cameras.first;
   }
+  await EasyLocalization.ensureInitialized();
 
-  runApp(const MainApp());
+  runApp(
+    EasyLocalization(
+      supportedLocales: const [
+        Locale('en', 'US'),
+        Locale('uk', 'UA'),
+        Locale('ru', 'RU')
+      ],
+      path: 'assets/translations',
+      fallbackLocale: const Locale('ru', 'RU'),
+      child: const MainApp(),
+    ),
+  );
 }
 
 class MainApp extends StatefulWidget {
@@ -70,7 +84,7 @@ class _MainAppState extends State<MainApp> {
       model: 'gemini-pro',
       apiKey: api_key,
       generationConfig: GenerationConfig(
-        temperature: 0.4,
+        temperature: 1,
         topK: 32,
         topP: 1,
         maxOutputTokens: 4096,
@@ -105,6 +119,20 @@ class _MainAppState extends State<MainApp> {
           child: MaterialApp(
             debugShowCheckedModeBanner: false,
             theme: MarketplaceTheme.theme,
+            // supportedLocales: const [
+            //   Locale('en', ''), // English
+            //   Locale('ru', ''), // Russian
+            //   Locale('uk', ''), // Ukrainian
+            // ],
+            // localizationsDelegates: const [
+            //   GlobalMaterialLocalizations.delegate,
+            //   GlobalWidgetsLocalizations.delegate,
+            //   GlobalCupertinoLocalizations.delegate,
+            // ],
+            localizationsDelegates: context.localizationDelegates,
+            supportedLocales: context.supportedLocales,
+            // locale: const Locale('ru', 'RU'),
+            // locale:   context.locale,
             scrollBehavior: const ScrollBehavior().copyWith(
               dragDevices: {
                 PointerDeviceKind.mouse,

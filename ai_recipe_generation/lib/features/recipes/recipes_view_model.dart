@@ -7,7 +7,7 @@ import 'recipe_model.dart';
 class SavedRecipesViewModel extends ChangeNotifier {
   List<Recipe> recipes = [];
 
-  final recipePath = '/recipes';
+  final recipePath = 'recipes';
   final firestore = FirebaseFirestore.instance;
 
   SavedRecipesViewModel() {

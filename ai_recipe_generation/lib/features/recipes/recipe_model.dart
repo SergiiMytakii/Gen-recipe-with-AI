@@ -14,6 +14,7 @@ class Recipe {
     required this.allergens,
     required this.servings,
     required this.nutritionInformation,
+    required this.imageUrl,
     this.rating = -1,
   });
 
@@ -23,6 +24,8 @@ class Recipe {
   final List<String> ingredients;
   final List<String> instructions;
   final String cuisine;
+  String imageUrl;
+
   final List<String> allergens;
   final String servings;
   final Map<String, dynamic> nutritionInformation;
@@ -34,6 +37,7 @@ class Recipe {
 
     final validJson = cleanJson(content.text!);
     final json = jsonDecode(validJson);
+    print(json);
 
     if (json
         case {
@@ -56,6 +60,7 @@ class Recipe {
           allergens: allergens.map((i) => i.toString()).toList(),
           cuisine: cuisine,
           servings: servings,
+          imageUrl: '',
           description: description);
     }
 
@@ -71,6 +76,7 @@ class Recipe {
       'cuisine': cuisine,
       'rating': rating,
       'allergens': allergens,
+      'imageUrl': imageUrl,
       'nutritionInformation': nutritionInformation,
       'servings': servings,
       'description': description,
@@ -87,6 +93,7 @@ class Recipe {
           "cuisine": String cuisine,
           "description": String description,
           "servings": String servings,
+          "imageUrl": String? imageUrl,
           "nutritionInformation": Map<String, dynamic> nutritionInformation,
           "allergens": List<dynamic> allergens,
           "rating": int rating
@@ -100,6 +107,7 @@ class Recipe {
         allergens: allergens.map((i) => i.toString()).toList(),
         cuisine: cuisine,
         servings: servings,
+        imageUrl: imageUrl ?? '',
         description: description,
         rating: rating,
       );

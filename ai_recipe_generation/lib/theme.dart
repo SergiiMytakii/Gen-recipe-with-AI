@@ -3,13 +3,13 @@ import 'package:google_fonts/google_fonts.dart';
 
 abstract class MarketplaceTheme {
   static ThemeData theme = ThemeData(
-    fontFamily: GoogleFonts.lexend().fontFamily,
-    textTheme: GoogleFonts.lexendTextTheme().copyWith().apply(
+    fontFamily: GoogleFonts.lato().fontFamily,
+    textTheme: GoogleFonts.latoTextTheme().copyWith().apply(
         bodyColor: const Color(0xff000000),
         displayColor: const Color(0xff000000)),
     colorScheme: const ColorScheme.light(
-      primary: Color(0xffA2E3F6),
-      secondary: Color(0xff4FAD85),
+      primary: Color.fromARGB(255, 238, 169, 57),
+      secondary: Color.fromARGB(255, 0, 128, 128),
       tertiary: Color(0xffDE7A60),
       scrim: Color(0xffFFABC7),
       surface: Color(0xffFDF7F0),
@@ -36,10 +36,10 @@ abstract class MarketplaceTheme {
     ),
   );
 
-  static const Color primary = Color(0xffA2E3F6);
+  static const Color primary = Color.fromARGB(255, 238, 169, 57);
   static const Color scrim = Color(0xffFFABC7);
   static const Color tertiary = Color(0xffDE7A60);
-  static const Color secondary = Color(0xff4FAD85);
+  static const Color secondary = Color.fromARGB(255, 255, 204, 77);
   static const Color borderColor = Colors.black12;
   static const Color focusedBorderColor = Colors.black45;
 
@@ -97,21 +97,21 @@ abstract class MarketplaceTheme {
         color: theme.colorScheme.onSecondary,
       );
 
-  static TextStyle get dossierParagraph => GoogleFonts.anonymousPro().copyWith(
+  static TextStyle get dossierParagraph => GoogleFonts.lato().copyWith(
         fontWeight: FontWeight.normal,
         fontSize: 14,
         //height: 18,
         color: theme.colorScheme.onSecondary,
       );
 
-  static TextStyle get dossierSubheading => GoogleFonts.anonymousPro().copyWith(
+  static TextStyle get dossierSubheading => GoogleFonts.lato().copyWith(
         fontWeight: FontWeight.normal,
         fontSize: 18,
         //height: 18,
         color: theme.colorScheme.onSecondary,
       );
 
-  static TextStyle get dossierHeading => GoogleFonts.anonymousPro().copyWith(
+  static TextStyle get dossierHeading => GoogleFonts.lato().copyWith(
         fontWeight: FontWeight.bold,
         fontSize: 28,
         //height: 18,

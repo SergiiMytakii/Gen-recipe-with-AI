@@ -42,7 +42,7 @@ class _CategorySelectionInputState<T extends Enum>
                 } else if (chipData is DietaryRestrictionsFilter) {
                   return dietaryRestrictionReadable(chipData);
                 } else if (chipData is BasicIngredientsFilter) {
-                  return chipData.name;
+                  return basicIngredientsFilterReadable(chipData);
                 } else {
                   throw "unknown enum";
                 }
@@ -56,7 +56,7 @@ class _CategorySelectionInputState<T extends Enum>
                   if (states.contains(WidgetState.selected)) {
                     return MarketplaceTheme.secondary.withOpacity(.3);
                   }
-                  return Theme.of(context).splashColor;
+                  return Theme.of(context).cardColor;
                 }),
                 surfaceTintColor: Colors.transparent,
                 shadowColor: Colors.transparent,

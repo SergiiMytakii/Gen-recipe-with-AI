@@ -4,6 +4,7 @@ import 'package:ai_recipe_generation/features/prompt/prompt_view_model.dart';
 import 'package:ai_recipe_generation/features/recipes/saved_recipes_screen.dart';
 import 'package:ai_recipe_generation/widgets/bottom_bar_shape_border.dart';
 import 'package:ai_recipe_generation/widgets/marketplace_button_widget.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:material_symbols_icons/symbols.dart';
 import 'package:provider/provider.dart';
@@ -88,9 +89,9 @@ class _AdaptiveRouterState extends State<AdaptiveRouter>
   }
 
   List<NavigationRailDestination> destinations = [
-    const NavigationRailDestination(
-      icon: Icon(Symbols.home),
-      label: Text('Create a recipe'),
+    NavigationRailDestination(
+      icon: const Icon(Symbols.home),
+      label: Text('Create a recipe'.tr()),
     ),
     const NavigationRailDestination(
       icon: Icon(Symbols.bookmarks),
@@ -199,7 +200,6 @@ class _AdaptiveRouterState extends State<AdaptiveRouter>
                 Positioned(
                   top: (MediaQuery.of(context).size.height / 4),
                   left: (MediaQuery.of(context).size.width / 2) - 160,
-                  height: MediaQuery.of(context).size.height / 4,
                   width: 320,
                   child: Container(
                     decoration: BoxDecoration(

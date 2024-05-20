@@ -1,5 +1,7 @@
 import 'dart:math';
 
+import 'package:ai_recipe_generation/util/valid_url_checker.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:material_symbols_icons/symbols.dart';
@@ -155,7 +157,7 @@ class RecipeDisplayWidget extends StatelessWidget {
                                 height: 35,
                                 child: SvgPicture.asset(
                                   'assets/chef_cat.svg',
-                                  semanticsLabel: 'Chef cat icon',
+                                  semanticsLabel: context.tr('Chef cat icon'),
                                 ),
                               ),
                               Transform.translate(
@@ -163,7 +165,7 @@ class RecipeDisplayWidget extends StatelessWidget {
                                 child: Transform.rotate(
                                   angle: -pi / 20.0,
                                   child: Text(
-                                    'Chef Noodle \n says...',
+                                    context.tr('Chef Noodle \n says...'),
                                     style: MarketplaceTheme.label,
                                   ),
                                 ),
@@ -179,6 +181,11 @@ class RecipeDisplayWidget extends StatelessWidget {
                   height: 40,
                   color: Colors.black26,
                 ),
+                if (recipe.imageUrl.isNotEmpty)
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Image.network(recipe.imageUrl),
+                  ),
                 Table(
                   columnWidths: const {
                     0: FlexColumnWidth(2),
@@ -188,7 +195,7 @@ class RecipeDisplayWidget extends StatelessWidget {
                     TableRow(
                       children: [
                         Text(
-                          'Allergens:',
+                          context.tr('Allergens:'),
                           style: MarketplaceTheme.paragraph.copyWith(
                             fontWeight: FontWeight.bold,
                           ),
@@ -198,7 +205,7 @@ class RecipeDisplayWidget extends StatelessWidget {
                     ),
                     TableRow(children: [
                       Text(
-                        'Servings:',
+                        context.tr('Servings:'),
                         style: MarketplaceTheme.paragraph.copyWith(
                           fontWeight: FontWeight.bold,
                         ),
@@ -207,7 +214,7 @@ class RecipeDisplayWidget extends StatelessWidget {
                     ]),
                     TableRow(children: [
                       Text(
-                        'Nutrition per serving:',
+                        context.tr('Nutrition per serving:'),
                         style: MarketplaceTheme.paragraph.copyWith(
                           fontWeight: FontWeight.bold,
                         ),
@@ -227,7 +234,7 @@ class RecipeDisplayWidget extends StatelessWidget {
                             ),
                             Expanded(
                               child: Text(
-                                entry.key,
+                                context.tr(entry.key),
                                 style: MarketplaceTheme.label,
                                 softWrap: true,
                               ),
@@ -255,15 +262,15 @@ class RecipeDisplayWidget extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(
                     vertical: MarketplaceTheme.spacing7,
                   ),
-                  child:
-                      Text('Ingredients:', style: MarketplaceTheme.subheading1),
+                  child: Text(context.tr('Ingredients:'),
+                      style: MarketplaceTheme.subheading1),
                 ),
                 ..._buildIngredients(recipe.ingredients),
                 const SizedBox(height: MarketplaceTheme.spacing4),
                 Padding(
                   padding: const EdgeInsets.symmetric(
                       vertical: MarketplaceTheme.spacing7),
-                  child: Text('Instructions:',
+                  child: Text(context.tr('Instructions:'),
                       style: MarketplaceTheme.subheading1),
                 ),
                 ..._buildInstructions(recipe.instructions),

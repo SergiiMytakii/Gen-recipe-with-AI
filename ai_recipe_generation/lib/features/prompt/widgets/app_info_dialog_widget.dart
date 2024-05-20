@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:material_symbols_icons/symbols.dart';
 
@@ -40,42 +41,48 @@ class AppInfoDialog extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             Text(
-              "Use the form on this screen to ask Cat Chef to make a recipe for you.",
+              context.tr(
+                  "Use the form on this screen to ask Cat Chef to make a recipe for you."),
               style: MarketplaceTheme.heading3,
             ),
             const SizedBox(
               height: MarketplaceTheme.spacing4,
             ),
             bulletRow(
-              "Add images of ingredients you have, like a picture of the inside of your fridge or pantry.",
+              context.tr(
+                  "Add images of ingredients you have, like a picture of the inside of your fridge or pantry."),
               icon: Symbols.looks_one,
             ),
             const SizedBox(
               height: MarketplaceTheme.spacing7,
             ),
             bulletRow(
-              "Choose what kind of food you're in the mood for, and what staple ingredients you have that might not be pictured.",
+              context.tr(
+                  "Choose what kind of food you're in the mood for, and what staple ingredients you have that might not be pictured."),
               icon: Symbols.looks_two,
             ),
             const SizedBox(
               height: MarketplaceTheme.spacing7,
             ),
             bulletRow(
-              "In the text box at the bottom, add any additional context that you'd like. \nFor example, you could say \"I'm in a hurry! Make sure the recipe doesn't take longer than 30 minutes to make.\"",
+              context.tr(
+                  "In the text box at the bottom, add any additional context that you'd like. \nFor example, you could say \"I'm in a hurry! Make sure the recipe doesn't take longer than 30 minutes to make.\""),
               icon: Symbols.looks_3,
             ),
             const SizedBox(
               height: MarketplaceTheme.spacing7,
             ),
             bulletRow(
-              "Submit the prompt, and Chef Noodle will give you a recipe!",
+              context.tr(
+                  "Submit the prompt, and Chef Noodle will give you a recipe!"),
               icon: Symbols.looks_4,
             ),
             const SizedBox(
               height: MarketplaceTheme.spacing4,
             ),
             Text(
-              "Steps 1, 2 and 3 are optional. More information will provide better results.",
+              context.tr(
+                  "Steps 1, 2 and 3 are optional. More information will provide better results."),
               style: MarketplaceTheme.label,
             ),
             const SizedBox(height: MarketplaceTheme.spacing4),
@@ -85,7 +92,7 @@ class AppInfoDialog extends StatelessWidget {
                 color: Colors.black87,
               ),
               label: Text(
-                'Close',
+                context.tr('Close'),
                 style: MarketplaceTheme.dossierParagraph,
               ),
               onPressed: () {

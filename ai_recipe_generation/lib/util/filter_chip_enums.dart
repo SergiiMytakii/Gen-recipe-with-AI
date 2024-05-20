@@ -1,3 +1,5 @@
+import 'package:easy_localization/easy_localization.dart';
+
 enum CuisineFilter {
   italian,
   mexican,
@@ -23,12 +25,25 @@ enum BasicIngredientsFilter {
   vinegar,
 }
 
+String basicIngredientsFilterReadable(BasicIngredientsFilter filter) {
+  return switch (filter) {
+    BasicIngredientsFilter.oil => 'oil'.tr(),
+    BasicIngredientsFilter.butter => 'butter'.tr(),
+    BasicIngredientsFilter.flour => 'flour'.tr(),
+    BasicIngredientsFilter.salt => 'salt'.tr(),
+    BasicIngredientsFilter.pepper => 'pepper'.tr(),
+    BasicIngredientsFilter.sugar => 'sugar'.tr(),
+    BasicIngredientsFilter.milk => 'milk'.tr(),
+    BasicIngredientsFilter.vinegar => 'vinegar'.tr(),
+  };
+}
+
 enum DietaryRestrictionsFilter {
   vegan,
   vegetarian,
   lactoseIntolerant,
   kosher,
-  // keto,
+  keto,
   wheatAllergies,
   nutAllergies,
   fishAllergies,
@@ -37,30 +52,30 @@ enum DietaryRestrictionsFilter {
 
 String dietaryRestrictionReadable(DietaryRestrictionsFilter filter) {
   return switch (filter) {
-    DietaryRestrictionsFilter.vegan => 'vegan',
-    DietaryRestrictionsFilter.vegetarian => 'vegetarian',
-    DietaryRestrictionsFilter.lactoseIntolerant => 'dairy free',
-    DietaryRestrictionsFilter.kosher => 'kosher',
-    // DietaryRestrictionsFilter.keto => 'low carb',
-    DietaryRestrictionsFilter.wheatAllergies => 'wheat allergy',
-    DietaryRestrictionsFilter.nutAllergies => 'nut allergy',
-    DietaryRestrictionsFilter.fishAllergies => 'fish allergy',
-    DietaryRestrictionsFilter.soyAllergies => 'soy allergy',
+    DietaryRestrictionsFilter.vegan => 'vegan'.tr(),
+    DietaryRestrictionsFilter.vegetarian => 'vegetarian'.tr(),
+    DietaryRestrictionsFilter.lactoseIntolerant => 'dairy free'.tr(),
+    DietaryRestrictionsFilter.kosher => 'kosher'.tr(),
+    DietaryRestrictionsFilter.keto => 'low carb'.tr(),
+    DietaryRestrictionsFilter.wheatAllergies => 'wheat allergy'.tr(),
+    DietaryRestrictionsFilter.nutAllergies => 'nut allergy'.tr(),
+    DietaryRestrictionsFilter.fishAllergies => 'fish allergy'.tr(),
+    DietaryRestrictionsFilter.soyAllergies => 'soy allergy'.tr(),
   };
 }
 
 String cuisineReadable(CuisineFilter filter) {
   return switch (filter) {
-    CuisineFilter.italian => 'Italian',
-    CuisineFilter.mexican => 'Mexican',
-    CuisineFilter.american => 'American',
-    CuisineFilter.french => 'French',
-    CuisineFilter.japanese => 'Japanese',
-    CuisineFilter.chinese => 'Chinese',
-    CuisineFilter.indian => 'Indian',
-    CuisineFilter.ethiopian => 'Ethiopian',
-    CuisineFilter.moroccan => 'Moroccan',
-    CuisineFilter.greek => 'Greek',
-    CuisineFilter.southAfrican => 'South African',
+    CuisineFilter.italian => 'Italian'.tr(),
+    CuisineFilter.mexican => 'Mexican'.tr(),
+    CuisineFilter.american => 'American'.tr(),
+    CuisineFilter.french => 'French'.tr(),
+    CuisineFilter.japanese => 'Japanese'.tr(),
+    CuisineFilter.chinese => 'Chinese'.tr(),
+    CuisineFilter.indian => 'Indian'.tr(),
+    CuisineFilter.ethiopian => 'Ethiopian'.tr(),
+    CuisineFilter.moroccan => 'Moroccan'.tr(),
+    CuisineFilter.greek => 'Greek'.tr(),
+    CuisineFilter.southAfrican => 'South African'.tr(),
   };
 }

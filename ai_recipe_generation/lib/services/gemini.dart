@@ -23,12 +23,12 @@ class GeminiService {
       final bytes = await (f.readAsBytes());
       imagesParts.add(DataPart('image/jpeg', bytes));
     }
-
+    additionalTextParts.forEach((t) => print(t.text + '\n'));
     final input = [
       Content.multi([...imagesParts, mainText, ...additionalTextParts])
     ];
 
-    return await model.generateContent(
+    final result = await model.generateContent(
       input,
       generationConfig: GenerationConfig(
         temperature: 0.4,
@@ -41,18 +41,21 @@ class GeminiService {
         SafetySetting(HarmCategory.hateSpeech, HarmBlockThreshold.high),
       ],
     );
+
+    return result;
   }
 
   static Future<GenerateContentResponse> generateContentFromText(
       GenerativeModel model, PromptData prompt) async {
     final mainText = TextPart(prompt.textInput);
     final additionalTextParts =
-        prompt.additionalTextInputs.map((t) => TextPart(t)).join("\n");
+        prompt.additionalTextInputs.map((t) => TextPart(t).toJson()).join("\n");
 
-    return await model.generateContent([
+    final result = await model.generateContent([
       Content.text(
         '${mainText.text} \n $additionalTextParts',
       )
     ]);
+    return result;
   }
 }

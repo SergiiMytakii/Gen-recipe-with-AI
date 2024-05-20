@@ -2,7 +2,7 @@ import 'package:ai_recipe_generation/features/recipes/recipes_view_model.dart';
 import 'package:ai_recipe_generation/features/recipes/widgets/recipe_fullscreen_dialog.dart';
 import 'package:ai_recipe_generation/theme.dart';
 import 'package:ai_recipe_generation/util/extensions.dart';
-import 'package:ai_recipe_generation/widgets/highlight_border_on_hover_widget.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:material_symbols_icons/symbols.dart';
 import 'package:provider/provider.dart';
@@ -157,82 +157,71 @@ class _ListTileState extends State<_ListTile> {
     final color = colors[widget.idx % colors.length];
 
     return GestureDetector(
-      child: HighlightBorderOnHoverWidget(
-        borderRadius: const BorderRadius.only(
-          topLeft: Radius.circular(MarketplaceTheme.defaultBorderRadius),
-          topRight: Radius.circular(50),
-          bottomRight: Radius.circular(MarketplaceTheme.defaultBorderRadius),
-          bottomLeft: Radius.circular(MarketplaceTheme.defaultBorderRadius),
+      child: Container(
+        decoration: const BoxDecoration(
+          boxShadow: [
+            BoxShadow(
+              offset: Offset(0, -2),
+              color: Colors.black38,
+              blurRadius: 5,
+            ),
+          ],
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(MarketplaceTheme.defaultBorderRadius),
+            topRight: Radius.circular(50),
+            bottomRight: Radius.circular(MarketplaceTheme.defaultBorderRadius),
+            bottomLeft: Radius.circular(MarketplaceTheme.defaultBorderRadius),
+          ),
+          color: Colors.white,
         ),
-        color: color,
         child: Container(
-          decoration: const BoxDecoration(
-            boxShadow: [
-              BoxShadow(
-                offset: Offset(0, -2),
-                color: Colors.black38,
-                blurRadius: 5,
-              ),
-            ],
-            borderRadius: BorderRadius.only(
+          decoration: BoxDecoration(
+            borderRadius: const BorderRadius.only(
               topLeft: Radius.circular(MarketplaceTheme.defaultBorderRadius),
               topRight: Radius.circular(50),
               bottomRight:
                   Radius.circular(MarketplaceTheme.defaultBorderRadius),
               bottomLeft: Radius.circular(MarketplaceTheme.defaultBorderRadius),
             ),
-            color: Colors.white,
+            color: color.withOpacity(.3),
           ),
-          child: Container(
-            decoration: BoxDecoration(
-              borderRadius: const BorderRadius.only(
-                topLeft: Radius.circular(MarketplaceTheme.defaultBorderRadius),
-                topRight: Radius.circular(50),
-                bottomRight:
-                    Radius.circular(MarketplaceTheme.defaultBorderRadius),
-                bottomLeft:
-                    Radius.circular(MarketplaceTheme.defaultBorderRadius),
+          padding: const EdgeInsets.all(MarketplaceTheme.spacing7),
+          child: Stack(
+            children: [
+              Text(
+                widget.recipe.title,
+                style: MarketplaceTheme.heading3,
               ),
-              color: color.withOpacity(.3),
-            ),
-            padding: const EdgeInsets.all(MarketplaceTheme.spacing7),
-            child: Stack(
-              children: [
-                Text(
-                  widget.recipe.title,
-                  style: MarketplaceTheme.heading3,
+              Positioned(
+                top: widget.constraints.isMobile ? 40 : 60,
+                left: 0,
+                child: Text(
+                  widget.recipe.cuisine,
+                  style: MarketplaceTheme.subheading1,
                 ),
-                Positioned(
-                  top: widget.constraints.isMobile ? 40 : 60,
-                  left: 0,
-                  child: Text(
-                    widget.recipe.cuisine,
-                    style: MarketplaceTheme.subheading1,
-                  ),
+              ),
+              Positioned(
+                right: 15,
+                top: widget.constraints.isMobile ? 40 : 60,
+                child: StartRating(
+                  initialRating: widget.recipe.rating,
+                  starColor: color,
+                  onTap: null,
                 ),
-                Positioned(
-                  right: 15,
-                  top: widget.constraints.isMobile ? 40 : 60,
-                  child: StartRating(
-                    initialRating: widget.recipe.rating,
-                    starColor: color,
-                    onTap: null,
-                  ),
-                )
-              ],
-            ),
+              )
+            ],
           ),
         ),
       ),
       onTap: () async {
-        await showDialog<Null>(
+        await showDialog<bool>(
           context: context,
           builder: (context) {
             return RecipeDialogScreen(
               recipe: widget.recipe,
               subheading: Row(
                 children: [
-                  const Text('My rating:'),
+                  Text(context.tr('My rating:')),
                   const SizedBox(width: 10),
                   StartRating(
                     initialRating: widget.recipe.rating,
@@ -250,7 +239,7 @@ class _ListTileState extends State<_ListTile> {
                     viewModel.deleteRecipe(widget.recipe);
                     Navigator.of(context).pop();
                   },
-                  buttonText: "Delete Recipe",
+                  buttonText: context.tr("Delete Recipe"),
                   icon: Symbols.delete,
                 ),
               ],

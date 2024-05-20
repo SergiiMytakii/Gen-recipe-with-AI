@@ -1,4 +1,5 @@
 import 'package:ai_recipe_generation/util/extensions.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:material_symbols_icons/symbols.dart';
@@ -24,20 +25,21 @@ class AnimatedAppBar extends StatelessWidget {
 
   String get headerText {
     return switch (tabController.index) {
-      0 => 'Create a recipe',
-      1 => 'Saved recipes',
-      2 => 'Settings',
-      _ => 'Uh oh!',
+      0 => 'Create a recipe'.tr(),
+      1 => 'Saved recipes'.tr(),
+      2 => 'Settings'.tr(),
+      _ => 'Uh oh!'.tr(),
     };
   }
 
   String get helperText {
     return switch (tabController.index) {
       0 =>
-        "Tell me what ingredients you have and what you're feelin', and I'll create a recipe for you!",
-      1 => "These are all my saved recipes created by Chef Noodle.",
-      2 => 'Settings',
-      _ => 'Uh oh!',
+        "Tell me what ingredients you have and what you're feelin', and I'll create a recipe for you!"
+            .tr(),
+      1 => "These are all my saved recipes created by Chef Noodle.".tr(),
+      2 => 'Settings'.tr(),
+      _ => 'Uh oh!'.tr(),
     };
   }
 
@@ -65,7 +67,7 @@ class AnimatedAppBar extends StatelessWidget {
                     height: avatarSize,
                     child: SvgPicture.asset(
                       'assets/chef_cat.svg',
-                      semanticsLabel: 'Chef cat icon',
+                      semanticsLabel: 'Chef cat icon'.tr(),
                     ),
                   ),
                   const SizedBox(
@@ -74,7 +76,7 @@ class AnimatedAppBar extends StatelessWidget {
                   if (scrollController.positions.isNotEmpty &&
                       scrollController.offset < 200)
                     Text(
-                      "Meowdy! Let's get cooking!",
+                      "Meowdy! Let's get cooking!".tr(),
                       style: MarketplaceTheme.heading3,
                     ),
                   if (scrollController.positions.isNotEmpty &&

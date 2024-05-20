@@ -1,5 +1,5 @@
-import 'package:ai_recipe_generation/widgets/highlight_border_on_hover_widget.dart';
 import 'package:camera/camera.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:material_symbols_icons/symbols.dart';
@@ -79,7 +79,7 @@ class _AddImageToPromptWidgetState extends State<AddImageToPromptWidget> {
     if (image != null) {
       return image;
     } else {
-      throw "failed to take image";
+      throw "failed to take image".tr();
     }
   }
 
@@ -88,7 +88,7 @@ class _AddImageToPromptWidgetState extends State<AddImageToPromptWidget> {
     if (image != null) {
       return image;
     } else {
-      throw "failed to take image";
+      throw "failed to take image".tr();
     }
   }
 
@@ -101,53 +101,56 @@ class _AddImageToPromptWidgetState extends State<AddImageToPromptWidget> {
   }
 
   @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     final viewModel = context.watch<PromptViewModel>();
 
-    return HighlightBorderOnHoverWidget(
-      borderRadius: BorderRadius.zero,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(
-              left: MarketplaceTheme.spacing7,
-              top: MarketplaceTheme.spacing7,
-            ),
-            child: Text(
-              'I have these ingredients:',
-              style: MarketplaceTheme.dossierParagraph,
-            ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Padding(
+          padding: const EdgeInsets.only(
+            left: MarketplaceTheme.spacing7,
+            top: MarketplaceTheme.spacing7,
           ),
-          SizedBox(
-            height: widget.height,
-            child: ListView(
-              scrollDirection: Axis.horizontal,
-              children: [
+          child: Text(
+            context.tr('I have these ingredients:'),
+            style: MarketplaceTheme.dossierParagraph,
+          ),
+        ),
+        SizedBox(
+          height: widget.height,
+          child: ListView(
+            scrollDirection: Axis.horizontal,
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(MarketplaceTheme.spacing7),
+                child: AddImage(
+                    width: widget.width,
+                    height: widget.height,
+                    onTap: () async {
+                      final image = await _addImage();
+                      viewModel.addImage(image);
+                    }),
+              ),
+              for (var image in viewModel.userPrompt.images)
                 Padding(
                   padding: const EdgeInsets.all(MarketplaceTheme.spacing7),
-                  child: AddImage(
-                      width: widget.width,
-                      height: widget.height,
-                      onTap: () async {
-                        final image = await _addImage();
-                        viewModel.addImage(image);
-                      }),
-                ),
-                for (var image in viewModel.userPrompt.images)
-                  Padding(
-                    padding: const EdgeInsets.all(MarketplaceTheme.spacing7),
-                    child: PromptImage(
-                      width: widget.width,
-                      file: image,
-                      onTapIcon: () => viewModel.removeImage(image),
-                    ),
+                  child: PromptImage(
+                    width: widget.width,
+                    file: image,
+                    onTapIcon: () => viewModel.removeImage(image),
                   ),
-              ],
-            ),
+                ),
+            ],
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

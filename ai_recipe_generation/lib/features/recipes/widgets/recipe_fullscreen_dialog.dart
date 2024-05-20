@@ -1,4 +1,5 @@
 import 'package:ai_recipe_generation/features/recipes/widgets/recipe_display_widget.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:material_symbols_icons/symbols.dart';
 
@@ -42,7 +43,7 @@ class RecipeDialogScreen extends StatelessWidget {
                   onPressed: () {
                     Navigator.of(context).pop(true);
                   },
-                  buttonText: 'Close',
+                  buttonText: context.tr('Close'),
                   icon: Symbols.close,
                 ),
                 ...actions,
