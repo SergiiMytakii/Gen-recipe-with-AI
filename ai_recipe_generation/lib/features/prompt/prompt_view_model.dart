@@ -28,8 +28,7 @@ class PromptViewModel extends ChangeNotifier {
   TextEditingController promptTextController = TextEditingController();
 
   String badImageFailure =
-      "The recipe request either does not contain images, or does not contain images of food items. I cannot recommend a recipe."
-          .tr();
+      "The recipe request either does not contain images, or does not contain images of food items. I cannot recommend a recipe.";
 
   Recipe? recipe;
   String? _geminiFailureResponse;
@@ -140,6 +139,7 @@ class PromptViewModel extends ChangeNotifier {
 
     try {
       final String? response = await OpenAIService.postOpenAIRequest(prompt);
+
       if (response != null) {
         recipe = Recipe.fromOpenAiContent(response);
         if (recipe != null) {

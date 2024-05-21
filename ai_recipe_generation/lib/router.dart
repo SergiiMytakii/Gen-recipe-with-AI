@@ -229,7 +229,7 @@ class _AdaptiveRouterState extends State<AdaptiveRouter>
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text(viewModel.geminiFailureResponse!),
+                          Text(context.tr(viewModel.geminiFailureResponse!)),
                           Align(
                             alignment: Alignment.bottomRight,
                             child: MarketplaceButton(

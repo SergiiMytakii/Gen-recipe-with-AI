@@ -3,17 +3,17 @@
 <plist version="1.0">
 <dict>
 	<key>API_KEY</key>
-	<string>AIzaSyBNEtAHdjm3oFV6JZ6nbx5t6Pfyj4w4hbo</string>
+	<string>AIzaSyAADJPFxx3p84NPtjECR8YW9aNQvxe5I9M</string>
 	<key>GCM_SENDER_ID</key>
-	<string>44885228795</string>
+	<string>1002320533567</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.example.geminiIoTalk</string>
+	<string>com.aiassist4u</string>
 	<key>PROJECT_ID</key>
-	<string>gemini-cat-chef</string>
+	<string>gemini-recipes-app</string>
 	<key>STORAGE_BUCKET</key>
-	<string>gemini-cat-chef.appspot.com</string>
+	<string>gemini-recipes-app.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -25,6 +25,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:44885228795:ios:8ef52eb95f012a148f845e</string>
+	<string>1:1002320533567:ios:117372c2d4ff0ffaff808a</string>
 </dict>
 </plist>
