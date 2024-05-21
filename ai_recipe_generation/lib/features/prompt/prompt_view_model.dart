@@ -107,8 +107,9 @@ class PromptViewModel extends ChangeNotifier {
         // handle no image or image of not-food
         if (content.text != null &&
             (content.text!.contains("Я не могу") ||
-                content.text!.contains("I can not") |
-                    content.text!.contains("I can't"))) {
+                content.text!.contains("Я не можу") ||
+                content.text!.contains("I cannot") ||
+                content.text!.contains("I can't"))) {
           geminiFailureResponse = content.text;
         } else {
           recipe = Recipe.fromGeneratedContent(content);
