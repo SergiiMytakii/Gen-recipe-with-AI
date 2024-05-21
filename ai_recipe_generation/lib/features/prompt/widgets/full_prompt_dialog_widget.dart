@@ -68,7 +68,7 @@ class FullPromptDialog extends StatelessWidget {
                   ),
                 ),
               const SizedBox(height: MarketplaceTheme.spacing4),
-              bulletRow(promptData.textInput),
+              bulletRow(promptData.mainPromptForChatGpt),
               if (promptData.additionalTextInputs.isNotEmpty)
                 ...promptData.additionalTextInputs.map((i) => bulletRow(i)),
               const SizedBox(height: MarketplaceTheme.spacing4),

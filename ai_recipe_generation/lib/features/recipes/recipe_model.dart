@@ -11,7 +11,6 @@ class Recipe {
     required this.ingredients,
     required this.instructions,
     required this.cuisine,
-    required this.allergens,
     required this.servings,
     required this.nutritionInformation,
     required this.imageUrl,
@@ -26,7 +25,6 @@ class Recipe {
   final String cuisine;
   String imageUrl;
 
-  final List<String> allergens;
   final String servings;
   final Map<String, dynamic> nutritionInformation;
   int rating;
@@ -34,7 +32,7 @@ class Recipe {
   factory Recipe.fromGeneratedContent(GenerateContentResponse content) {
     /// failures should be handled when the response is received
     assert(content.text != null);
-
+    print(content.text);
     final validJson = cleanJson(content.text!);
     final json = jsonDecode(validJson);
     print(json);
@@ -49,7 +47,6 @@ class Recipe {
           "description": String description,
           "servings": String servings,
           "nutritionInformation": Map<String, dynamic> nutritionInformation,
-          "allergens": List<dynamic> allergens,
         }) {
       return Recipe(
           id: id,
@@ -57,7 +54,36 @@ class Recipe {
           ingredients: ingredients.map((i) => i.toString()).toList(),
           instructions: instructions.map((i) => i.toString()).toList(),
           nutritionInformation: nutritionInformation,
-          allergens: allergens.map((i) => i.toString()).toList(),
+          cuisine: cuisine,
+          servings: servings,
+          imageUrl: '',
+          description: description);
+    }
+
+    throw JsonUnsupportedObjectError(json);
+  }
+  factory Recipe.fromOpenAiContent(String content) {
+    final validJson = cleanJson(content);
+    final json = jsonDecode(validJson);
+    print(json);
+
+    if (json
+        case {
+          "ingredients": List<dynamic> ingredients,
+          "instructions": List<dynamic> instructions,
+          "title": String title,
+          "id": String id,
+          "cuisine": String cuisine,
+          "description": String description,
+          "servings": String servings,
+          "nutritionInformation": Map<String, dynamic> nutritionInformation,
+        }) {
+      return Recipe(
+          id: id,
+          title: title,
+          ingredients: ingredients.map((i) => i.toString()).toList(),
+          instructions: instructions.map((i) => i.toString()).toList(),
+          nutritionInformation: nutritionInformation,
           cuisine: cuisine,
           servings: servings,
           imageUrl: '',
@@ -75,7 +101,6 @@ class Recipe {
       'ingredients': ingredients,
       'cuisine': cuisine,
       'rating': rating,
-      'allergens': allergens,
       'imageUrl': imageUrl,
       'nutritionInformation': nutritionInformation,
       'servings': servings,
@@ -95,7 +120,6 @@ class Recipe {
           "servings": String servings,
           "imageUrl": String? imageUrl,
           "nutritionInformation": Map<String, dynamic> nutritionInformation,
-          "allergens": List<dynamic> allergens,
           "rating": int rating
         }) {
       return Recipe(
@@ -104,7 +128,6 @@ class Recipe {
         ingredients: ingredients.map((i) => i.toString()).toList(),
         instructions: instructions.map((i) => i.toString()).toList(),
         nutritionInformation: nutritionInformation,
-        allergens: allergens.map((i) => i.toString()).toList(),
         cuisine: cuisine,
         servings: servings,
         imageUrl: imageUrl ?? '',

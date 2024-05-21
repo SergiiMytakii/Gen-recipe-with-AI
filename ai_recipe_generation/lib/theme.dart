@@ -3,8 +3,8 @@ import 'package:google_fonts/google_fonts.dart';
 
 abstract class MarketplaceTheme {
   static ThemeData theme = ThemeData(
-    fontFamily: GoogleFonts.lato().fontFamily,
-    textTheme: GoogleFonts.latoTextTheme().copyWith().apply(
+    fontFamily: GoogleFonts.roboto().fontFamily,
+    textTheme: GoogleFonts.robotoTextTheme().copyWith().apply(
         bodyColor: const Color(0xff000000),
         displayColor: const Color(0xff000000)),
     colorScheme: const ColorScheme.light(
@@ -97,21 +97,21 @@ abstract class MarketplaceTheme {
         color: theme.colorScheme.onSecondary,
       );
 
-  static TextStyle get dossierParagraph => GoogleFonts.lato().copyWith(
+  static TextStyle get dossierParagraph => GoogleFonts.roboto().copyWith(
         fontWeight: FontWeight.normal,
         fontSize: 14,
         //height: 18,
         color: theme.colorScheme.onSecondary,
       );
 
-  static TextStyle get dossierSubheading => GoogleFonts.lato().copyWith(
+  static TextStyle get dossierSubheading => GoogleFonts.roboto().copyWith(
         fontWeight: FontWeight.normal,
         fontSize: 18,
         //height: 18,
         color: theme.colorScheme.onSecondary,
       );
 
-  static TextStyle get dossierHeading => GoogleFonts.lato().copyWith(
+  static TextStyle get dossierHeading => GoogleFonts.roboto().copyWith(
         fontWeight: FontWeight.bold,
         fontSize: 28,
         //height: 18,

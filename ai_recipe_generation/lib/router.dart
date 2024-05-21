@@ -2,6 +2,7 @@ import 'package:ai_recipe_generation/app_bar.dart';
 import 'package:ai_recipe_generation/features/prompt/prompt_screen.dart';
 import 'package:ai_recipe_generation/features/prompt/prompt_view_model.dart';
 import 'package:ai_recipe_generation/features/recipes/saved_recipes_screen.dart';
+import 'package:ai_recipe_generation/features/settings/settings_screen.dart';
 import 'package:ai_recipe_generation/widgets/bottom_bar_shape_border.dart';
 import 'package:ai_recipe_generation/widgets/marketplace_button_widget.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -34,7 +35,7 @@ class _AdaptiveRouterState extends State<AdaptiveRouter>
   @override
   void initState() {
     super.initState();
-    tabController = TabController(length: 2, vsync: this);
+    tabController = TabController(length: 3, vsync: this);
     _textStyle = MarketplaceTheme.heading1.copyWith(
       color: Colors.black87.withOpacity(
         1.0,
@@ -93,9 +94,13 @@ class _AdaptiveRouterState extends State<AdaptiveRouter>
       icon: const Icon(Symbols.home),
       label: Text('Create a recipe'.tr()),
     ),
-    const NavigationRailDestination(
-      icon: Icon(Symbols.bookmarks),
-      label: Text('Saved Recipes'),
+    NavigationRailDestination(
+      icon: const Icon(Symbols.bookmarks),
+      label: Text('Saved Recipes'.tr()),
+    ),
+    NavigationRailDestination(
+      icon: const Icon(Symbols.settings),
+      label: Text('Settings'.tr()),
     )
   ];
 
@@ -132,6 +137,7 @@ class _AdaptiveRouterState extends State<AdaptiveRouter>
                           SavedRecipesScreen(
                             canScroll: innerScrollAllowed,
                           ),
+                          const SettigsScreen()
                         ],
                       ),
                     ),

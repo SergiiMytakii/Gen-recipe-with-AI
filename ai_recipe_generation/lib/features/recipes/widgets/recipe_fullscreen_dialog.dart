@@ -41,7 +41,7 @@ class RecipeDialogScreen extends StatelessWidget {
               children: [
                 MarketplaceButton(
                   onPressed: () {
-                    Navigator.of(context).pop(true);
+                    Navigator.of(context).pop(false);
                   },
                   buttonText: context.tr('Close'),
                   icon: Symbols.close,

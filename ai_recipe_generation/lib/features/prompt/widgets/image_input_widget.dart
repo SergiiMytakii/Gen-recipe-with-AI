@@ -102,7 +102,9 @@ class _AddImageToPromptWidgetState extends State<AddImageToPromptWidget> {
 
   @override
   void dispose() {
-    _controller.dispose();
+    if (DeviceInfo.isPhysicalDeviceWithCamera(deviceInfo)) {
+      _controller.dispose();
+    }
     super.dispose();
   }
 

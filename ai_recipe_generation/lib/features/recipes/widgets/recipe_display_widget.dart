@@ -192,17 +192,17 @@ class RecipeDisplayWidget extends StatelessWidget {
                     1: FlexColumnWidth(3),
                   },
                   children: [
-                    TableRow(
-                      children: [
-                        Text(
-                          context.tr('Allergens:'),
-                          style: MarketplaceTheme.paragraph.copyWith(
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        Text(recipe.allergens.join(', '))
-                      ],
-                    ),
+                    // TableRow(
+                    //   children: [
+                    //     Text(
+                    //       context.tr('Allergens:'),
+                    //       style: MarketplaceTheme.paragraph.copyWith(
+                    //         fontWeight: FontWeight.bold,
+                    //       ),
+                    //     ),
+                    //     Text(recipe.allergens.join(', '))
+                    //   ],
+                    // ),
                     TableRow(children: [
                       Text(
                         context.tr('Servings:'),

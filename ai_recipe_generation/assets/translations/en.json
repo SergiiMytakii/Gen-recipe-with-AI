@@ -56,6 +56,8 @@
     "pepper": "pepper",
     "sugar": "sugar",
     "milk": "milk",
+    "ketchup": "ketchup",
+    "bread": "bread",
     "vinegar": "vinegar",
     "Italian": "Italian",
     "Mexican": "Mexican",
@@ -78,6 +80,8 @@
     "fat": "fat",
     "carbs": "carbs",
     "protein": "protein",
-    "carbohydrates": "carbohydrates"
+    "carbohydrates": "carbohydrates",
+    "Change LLM Model": "Change LLM Model",
+    "Change Locale":  "Change Locale"
 
   }

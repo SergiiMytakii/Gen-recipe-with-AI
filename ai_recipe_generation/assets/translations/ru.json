@@ -27,10 +27,10 @@
     "These are all my saved recipes created by Chef Noodle.": "Это все мои сохраненные рецепты, созданные Шеф-Лапшой.",
     "assets/chef_cat.svg": "assets/chef_cat.svg",
     "Chef cat icon": "Иконка кота-повара",
-    "Meowdy! Let's get cooking!": "Привет! Давайте готовить!",
+    "Meowdy! Let's get cooking!": "Привет! Давай готовить!",
     "headerText": "Текст заголовка",
     "helperText": "Текст помощи",
-    "Add additional context...": "Добавить дополнительный контекст...",
+    "Add additional context...": "Добавить пожелания...",
     "Close": "Закрыть",
     "Delete Recipe": "Удалить рецепт",
     "Allergens:": "Аллергены:",
@@ -55,6 +55,8 @@
     "salt": "соль",
     "pepper": "перец",
     "sugar": "сахар",
+    "ketchup": "кетчуп",
+    "bread": "хлеб",
     "milk": "молоко",
     "vinegar": "уксус",
     "Italian": "Итальянская",
@@ -78,7 +80,9 @@
     "fat": "жиры",
     "carbs": "углеводы",
     "protein": "белки",
-    "carbohydrates": "углеводы"
+    "carbohydrates": "углеводы",
+    "Change LLM Model":  "Изменить модель LLM",
+    "Change Locale": "Язык приложения"
     
       
 }

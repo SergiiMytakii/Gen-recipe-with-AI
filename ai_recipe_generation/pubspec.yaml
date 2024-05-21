@@ -33,6 +33,7 @@ dependencies:
   http: any
   langchain_community: ^0.2.0+1
   langchain: ^0.7.1
+  langchain_openai: ^0.6.1
   easy_localization: ^3.0.7
 
 dev_dependencies:

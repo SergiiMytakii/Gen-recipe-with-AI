@@ -1,4 +1,5 @@
 import 'package:ai_recipe_generation/features/prompt/prompt_view_model.dart';
+import 'package:ai_recipe_generation/features/settings/settings_view_model.dart';
 import 'package:ai_recipe_generation/util/extensions.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -22,10 +23,25 @@ class PromptScreen extends StatelessWidget {
   const PromptScreen({super.key, required this.canScroll});
 
   final bool canScroll;
+  String getLanguageName(String localeCode) {
+    switch (localeCode) {
+      case 'ru':
+        return 'Russian';
+      case 'en':
+        return 'English';
+      case 'uk':
+        return 'Ukrainian';
+      default:
+        return localeCode; // Return the locale code if it's not recognized
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     final viewModel = context.watch<PromptViewModel>();
+    final settingsViewModel = context.watch<SettingsViewModel>();
+    viewModel.userPrompt.locale =
+        getLanguageName(settingsViewModel.currentLocale);
 
     return LayoutBuilder(
       builder: (context, constraints) {
@@ -243,7 +259,10 @@ class PromptScreen extends StatelessWidget {
                           flex: constraints.isMobile ? 10 : 3,
                           child: MarketplaceButton(
                             onPressed: () async {
-                              await viewModel.submitPrompt().then((_) async {
+                              await viewModel
+                                  .submitPrompt(
+                                      settingsViewModel.currentLlmModel)
+                                  .then((_) async {
                                 if (viewModel.recipe != null) {
                                   bool? shouldSave = await showDialog<bool>(
                                     context: context,

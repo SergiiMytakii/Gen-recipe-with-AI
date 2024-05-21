@@ -38,7 +38,7 @@ class _IconLoadingAnimatorState extends State<IconLoadingAnimator> {
   @override
   void initState() {
     super.initState();
-    notYetSeenIcons = List.from(widget.icons);
+    notYetSeenIcons = List.from(widget.icons.toList());
 
     currentIcon =
         notYetSeenIcons.removeAt(rand.nextInt(notYetSeenIcons.length));
@@ -53,7 +53,9 @@ class _IconLoadingAnimatorState extends State<IconLoadingAnimator> {
   }
 
   void nextIcon() {
-    if (notYetSeenIcons.length == 1) notYetSeenIcons = widget.icons;
+    if (notYetSeenIcons.length == 1)
+      notYetSeenIcons = List.from(widget.icons.toList());
+
     setState(() {
       currentIcon =
           notYetSeenIcons.removeAt(rand.nextInt(notYetSeenIcons.length));
